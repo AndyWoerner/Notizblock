@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
+
 <body>
     <div id="app">
         <div class="container mt-5">
@@ -17,19 +19,20 @@
                     <hr>
                     <div class="card-columns">
                         <div 
-                            class="card bg-warning"
-                            
-                            >
-                        <div class="card-body">
-                            <h5 class="card-title">Notiz #1</h5>
-                            <h6 class="card-subtitle mb-2 text-dark">30.03.2020, 12:00</h6>
-                            <p class="card-text">Inhalt der Notuz</p>
-                        </div>
+                            class="card bg-warning" 
+                            v-for="(note, index) in notes" 
+                            :key="index"
+                        >
+                            <div class="card-body">
+                                <h5 class="card-title">Notiz #{{ index + 1 }}</h5>
+                                <h6 class="card-subtitle mb-2 text-dark">{{timestamps[index]}}</h6>
+                                <p class="card-text">{{ notes[index] }}</p>
+                            </div>
                         </div>
                     </div>
                     <hr>
-                    <input-component
-                        :placeholder="placeholder"
+                    <input-component 
+                        :placeholder="placeholder" 
                     >
                     </input-component>
                 </div>
@@ -37,7 +40,8 @@
         </div>
     </div>
 
-<script src="https://unpkg.com/vue"></script>
-<script src="./main.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="./main.js"></script>
 </body>
+
 </html>
