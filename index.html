@@ -33,7 +33,18 @@
                                 </button>
                                 <h5 class="card-title">Notiz #{{ index + 1 }}</h5>
                                 <h6 class="card-subtitle mb-2 text-dark">{{ note.timestamp}}</h6>
-                                <p class="card-text">{{ note.note }}</p>
+                                
+                                <p 
+                                    class="card-text"
+                                    @dblclick="editNote(note)"
+                                    v-if="!activeEditNote || note.timestamp !== activeEditNote.timestamp"
+                                    >{{ note.note }}</p>
+                                <textarea 
+                                    class="form-control"
+                                    v-if="activeEditNote && note.timestamp === activeEditNote.timestamp"
+                                    v-model="activeEditNoteContent"
+                                    @keydown.enter="updateNote"
+                                    >{{ activeEditNote.note }}</textarea>
                             </div>
                         </div>
                     </div>
