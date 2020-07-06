@@ -25,6 +25,12 @@
                             :key="index"
                         >
                             <div class="card-body">
+                                <button 
+                                    class="close"
+                                    @click="deleteNote(note.timestamp)"
+                                    >
+                                    <span>&times;</span>
+                                </button>
                                 <h5 class="card-title">Notiz #{{ index + 1 }}</h5>
                                 <h6 class="card-subtitle mb-2 text-dark">{{ note.timestamp}}</h6>
                                 <p class="card-text">{{ note.note }}</p>

@@ -23,6 +23,9 @@ const getters = {
 const mutations = {
     STORE_NOTE (state, payload) { //payload sind die Daten die gespeichert werden sollen. Gängige Benennung.
         state.notes.push(payload)
+    },
+    REMOVE_NOTE(state, index){
+        state.notes.splice(index, 1)
     }
 }
 // Actions
@@ -31,6 +34,10 @@ const actions = {
         //context ist ähnlich wie state. Aber über den context können wir getters kontaktieren und state aufrufen
         //function commit -> damit wird ein mutation aufgerufen   
         context.commit("STORE_NOTE", payload)
+    },
+    removeNote (context, timestamp){
+        const index = context.state.notes.findIndex( note => note.timestamp === timestamp)
+        context.commit("REMOVE_NOTE", index)
     }
 }
 
@@ -110,6 +117,9 @@ new Vue({
         storeNote(event) {
             this.notes.push(event.note)
             this.timestamps.push(event.timestamp)
+        },
+        deleteNote(noteTimestamp){
+            this.$store.dispatch("removeNote",noteTimestamp)
         }
     }
 })
