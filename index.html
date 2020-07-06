@@ -26,8 +26,8 @@
                         >
                             <div class="card-body">
                                 <h5 class="card-title">Notiz #{{ index + 1 }}</h5>
-                                <h6 class="card-subtitle mb-2 text-dark">{{timestamps[index]}}</h6>
-                                <p class="card-text">{{ notes[index] }}</p>
+                                <h6 class="card-subtitle mb-2 text-dark">{{ note.timestamp}}</h6>
+                                <p class="card-text">{{ note.note }}</p>
                             </div>
                         </div>
                     </div>
@@ -42,6 +42,7 @@
     </div>
 
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vuex"></script>
     <script src="./main.js"></script>
 </body>
 
